@@ -1,8 +1,10 @@
-import enchant
 import string
 
+import enchant
+
+
 def bubbleSort(lst):
-    for i in range(0,len(lst)):
+    for i in range(0, len(lst)):
         for j in range(i + 1, len(lst)):
             if (lst[i] > lst[j]):
                 temp = lst[i]
@@ -14,11 +16,12 @@ def selection_sort(arr):
     n = len(arr)
     for i in range(n):
         min_idx = i
-        for j in range(i+1, n):
+        for j in range(i + 1, n):
             if arr[j] < arr[min_idx]:
                 min_idx = j
         arr[i], arr[min_idx] = arr[min_idx], arr[i]
     return arr
+
 
 def merge_sort(arr):
     if len(arr) > 1:
@@ -63,6 +66,7 @@ def spell_check(words):
             misspelled.append(word)
     return misspelled
 
+
 def suggest_corrections(misspelled_words):
     suggestions = {}
     for word in misspelled_words:
@@ -71,24 +75,22 @@ def suggest_corrections(misspelled_words):
     return suggestions
 
 
-str= input("enter paragraph in which you want to implement Soritng Algo: ")
-key=input("Enetr keyword to search: ")
+str = input("enter paragraph in which you want to implement Sorting Algo: ")
+str1 = str.maketrans('', '', string.punctuation)
+str_with_punctuation = str.translate(str1)
+key = input("Enter keyword to search: ")
 
-
-lst = str.split(" ")
+lst = str_with_punctuation.split(" ")
 
 merge_sort(lst)
 print(lst)
 
 for i in lst:
-    if  key in lst:
+    if key in lst:
         print("Keyword found")
         break
 else:
     print("Keyword not found")
-
-
-
 
 misspelled_words = spell_check(lst)
 
@@ -98,3 +100,4 @@ if misspelled_words:
         print(f"The word '{word}' is misspelled. Suggestions: {', '.join(suggestion)}")
 else:
     print("No misspelled words found.")
+
